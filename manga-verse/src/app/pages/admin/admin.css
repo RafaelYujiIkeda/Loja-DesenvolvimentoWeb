@@ -1,0 +1,94 @@
+
+.painel-admin {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.topo-admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+.topo-admin h1 {
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.topo-admin p {
+  color: #777;
+}
+
+.topo-admin button {
+  padding: 13px 20px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.lista-admin {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.produto-admin {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px #0001;
+}
+
+.produto-admin img {
+  width: 85px;
+  height: 115px;
+  object-fit: contain;
+}
+
+.dados-produto {
+  flex: 1;
+}
+
+.dados-produto h3 {
+  margin-bottom: 8px;
+}
+
+.dados-produto p {
+  color: #666;
+  margin: 5px 0;
+}
+
+.dados-produto strong {
+  display: block;
+  color: #dc2626;
+  margin-top: 8px;
+}
+
+.excluir {
+  background: #991b1b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .topo-admin {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .produto-admin {
+    flex-wrap: wrap;
+  }
+}

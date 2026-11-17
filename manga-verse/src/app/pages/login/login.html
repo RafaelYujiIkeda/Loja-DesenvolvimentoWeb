@@ -1,0 +1,49 @@
+
+<div class="pagina-auth">
+
+  <div class="card-auth">
+
+    <h1>Bem-vindo de volta!</h1>
+
+    <p class="subtitulo">
+      Entre na sua conta MangaVerse.
+    </p>
+
+    <form (ngSubmit)="entrar()">
+
+      <label>E-mail</label>
+
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        placeholder="Digite seu e-mail"
+        required>
+
+      <label>Senha</label>
+
+      <input
+        type="password"
+        name="senha"
+        [(ngModel)]="senha"
+        placeholder="Digite sua senha"
+        required>
+
+      <p *ngIf="mensagem" class="mensagem">
+        {{ mensagem }}
+      </p>
+
+      <button type="submit">
+        Entrar
+      </button>
+
+    </form>
+
+    <p class="alternativa">
+      Ainda não possui uma conta?
+      <a routerLink="/cadastro">Cadastre-se</a>
+    </p>
+
+  </div>
+
+</div>

@@ -1,0 +1,41 @@
+
+<div class="pagina-detalhes" *ngIf="manga">
+
+  <div class="imagem-manga">
+    <img [src]="manga.imagem" [alt]="manga.nome">
+  </div>
+
+  <div class="informacoes-manga">
+
+    <h1>{{ manga.nome }}</h1>
+
+    <p><strong>Autor:</strong> {{ manga.autor }}</p>
+
+    <p><strong>Gênero:</strong> {{ manga.genero }}</p>
+
+    <p class="descricao">
+      {{ manga.descricao }}
+    </p>
+
+    <h2>
+      {{ manga.preco | currency:'BRL' }}
+    </h2>
+
+    <p>Estoque disponível: {{ manga.estoque }}</p>
+
+    <button
+      [disabled]="manga.estoque <= 0"
+      (click)="adicionarAoCarrinho()">
+      Adicionar ao carrinho
+    </button>
+
+    <a routerLink="/catalogo">Voltar ao catálogo</a>
+
+  </div>
+
+</div>
+
+<div *ngIf="!manga">
+  <h2>Mangá não encontrado!</h2>
+  <a routerLink="/catalogo">Voltar ao catálogo</a>
+</div>

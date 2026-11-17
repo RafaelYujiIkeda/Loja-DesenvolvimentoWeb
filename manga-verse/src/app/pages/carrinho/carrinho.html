@@ -1,0 +1,89 @@
+
+<div class="pagina-carrinho">
+
+  <h1>Meu carrinho</h1>
+
+  <div *ngIf="itens.length === 0" class="carrinho-vazio">
+
+    <h2>Seu carrinho está vazio!</h2>
+
+    <p>Que tal encontrar um novo mangá?</p>
+
+    <a routerLink="/catalogo">Voltar ao catálogo</a>
+
+  </div>
+
+  <div *ngIf="itens.length > 0">
+
+    <div class="item-carrinho" *ngFor="let item of itens">
+
+      <img
+        [src]="item.manga.imagem"
+        [alt]="item.manga.nome">
+
+      <div class="informacoes">
+
+        <h2>{{ item.manga.nome }}</h2>
+
+        <p>
+          Preço:
+          {{ item.manga.preco | currency:'BRL' }}
+        </p>
+
+        <p>
+          Subtotal:
+          {{ item.manga.preco * item.quantidade | currency:'BRL' }}
+        </p>
+
+        <div class="quantidade">
+
+          <button
+            (click)="alterarQuantidade(
+              item.manga.id,
+              item.quantidade - 1
+            )">
+            -
+          </button>
+
+          <span>{{ item.quantidade }}</span>
+
+          <button
+            (click)="alterarQuantidade(
+              item.manga.id,
+              item.quantidade + 1
+            )">
+            +
+          </button>
+
+        </div>
+
+        <button
+          class="remover"
+          (click)="remover(item.manga.id)">
+          Remover
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="resumo">
+
+      <h2>Resumo da compra</h2>
+
+      <h3>
+        Total:
+        {{ carrinhoService.calcularTotal() | currency:'BRL' }}
+      </h3>
+
+      <button
+        class="finalizar"
+        (click)="finalizarCompra()">
+        Finalizar compra
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

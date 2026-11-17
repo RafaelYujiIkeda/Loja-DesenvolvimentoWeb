@@ -1,0 +1,37 @@
+<header class="header">
+
+  <h1 routerLink="/">MangaVerse</h1>
+
+  <nav>
+
+    <a routerLink="/catalogo">Catálogo</a>
+
+    <a routerLink="/carrinho">🛒 Carrinho</a>
+
+    <a
+      *ngIf="authService.obterUsuarioLogado()?.tipo === 'admin'"
+      routerLink="/admin">
+      Administração
+    </a>
+
+    <a
+      *ngIf="!authService.obterUsuarioLogado()"
+      routerLink="/login">
+      Login
+    </a>
+
+    <a
+      *ngIf="!authService.obterUsuarioLogado()"
+      routerLink="/cadastro">
+      Cadastro
+    </a>
+
+    <button
+      *ngIf="authService.obterUsuarioLogado()"
+      (click)="sair()">
+      Sair
+    </button>
+
+  </nav>
+
+</header>

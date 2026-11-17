@@ -1,0 +1,197 @@
+
+<!-- BANNER PRINCIPAL -->
+<section class="banner">
+
+  <div class="banner-conteudo">
+
+    <span class="etiqueta">BEM-VINDO À MANGAVERSE</span>
+
+    <h1>
+      Sua próxima aventura
+      <span>começa aqui!</span>
+    </h1>
+
+    <p>
+      Encontre seus mangás favoritos, descubra novas histórias
+      e mergulhe em universos incríveis.
+    </p>
+
+    <a routerLink="/catalogo" class="botao-banner">
+      Explorar catálogo
+      <span>→</span>
+    </a>
+
+  </div>
+
+  <div class="banner-imagem">
+    <img
+      src="https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=700"
+      alt="Coleção de quadrinhos e mangás">
+  </div>
+
+</section>
+
+
+<!-- CATEGORIAS -->
+<section class="categorias">
+
+  <div class="titulo-secao">
+    <h2>Explore por categoria</h2>
+    <p>Encontre uma história que combina com você.</p>
+  </div>
+
+  <div class="lista-categorias">
+
+    <a routerLink="/catalogo" class="categoria">
+      <span>⚔️</span>
+      <h3>Ação</h3>
+    </a>
+
+    <a routerLink="/catalogo" class="categoria">
+      <span>🗺️</span>
+      <h3>Aventura</h3>
+    </a>
+
+    <a routerLink="/catalogo" class="categoria">
+      <span>❤️</span>
+      <h3>Romance</h3>
+    </a>
+
+    <a routerLink="/catalogo" class="categoria">
+      <span>👻</span>
+      <h3>Fantasia</h3>
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- MANGÁS EM DESTAQUE -->
+<section class="destaques">
+
+  <div class="titulo-secao">
+
+    <div>
+      <span class="etiqueta">NOSSAS RECOMENDAÇÕES</span>
+      <h2>Mangás em destaque</h2>
+      <p>Histórias que merecem um lugar na sua coleção.</p>
+    </div>
+
+    <a routerLink="/catalogo" class="link-catalogo">
+      Ver todos →
+    </a>
+
+  </div>
+
+
+  <div class="lista-mangas">
+
+    <div
+      class="card-manga"
+      *ngFor="let manga of mangasDestaque">
+
+      <img
+        [src]="manga.imagem"
+        [alt]="manga.nome">
+
+      <div class="informacoes-manga">
+
+        <span class="genero">{{ manga.genero }}</span>
+
+        <h3>{{ manga.nome }}</h3>
+
+        <p>{{ manga.autor }}</p>
+
+        <strong>
+          {{ manga.preco | currency:'BRL' }}
+        </strong>
+
+        <a
+          [routerLink]="['/detalhes', manga.id]"
+          class="botao-detalhes">
+          Ver detalhes
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <p *ngIf="mangasDestaque.length === 0" class="sem-mangas">
+    Nenhum mangá disponível no momento.
+  </p>
+
+</section>
+
+
+<!-- SOBRE A LOJA -->
+<section class="sobre">
+
+  <div class="sobre-conteudo">
+
+    <span class="etiqueta">POR QUE MANGAVERSE?</span>
+
+    <h2>
+      Muito mais que uma loja,
+      um universo de histórias.
+    </h2>
+
+    <p>
+      Na MangaVerse, você encontra títulos incríveis,
+      desde os grandes clássicos até os lançamentos
+      mais procurados pelos fãs de mangá.
+    </p>
+
+    <a routerLink="/catalogo" class="botao-banner">
+      Conhecer a loja →
+    </a>
+
+  </div>
+
+  <div class="beneficios">
+
+    <div class="beneficio">
+      <span>📚</span>
+      <div>
+        <h3>Grande variedade</h3>
+        <p>Diferentes títulos e gêneros para todos os gostos.</p>
+      </div>
+    </div>
+
+    <div class="beneficio">
+      <span>🛒</span>
+      <div>
+        <h3>Compra fácil</h3>
+        <p>Encontre seus mangás favoritos em poucos cliques.</p>
+      </div>
+    </div>
+
+    <div class="beneficio">
+      <span>⭐</span>
+      <div>
+        <h3>Histórias incríveis</h3>
+        <p>Descubra novos universos e personagens.</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CHAMADA FINAL -->
+<section class="chamada-final">
+
+  <h2>Pronto para sua próxima leitura?</h2>
+
+  <p>
+    Explore nosso catálogo e encontre seu próximo mangá favorito.
+  </p>
+
+  <a routerLink="/catalogo">
+    Explorar mangás →
+  </a>
+
+</section>

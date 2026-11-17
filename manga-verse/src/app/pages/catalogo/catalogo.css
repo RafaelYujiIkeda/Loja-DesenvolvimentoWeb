@@ -1,0 +1,89 @@
+
+.catalogo {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.catalogo h1 {
+  text-align: center;
+  font-size: 32px;
+  color: #222;
+  margin-bottom: 40px;
+}
+
+.lista-mangas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.card-manga {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-manga:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+.card-manga img {
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.card-manga h2 {
+  font-size: 21px;
+  color: #222;
+  margin: 10px 0;
+}
+
+.card-manga p {
+  color: #666;
+  font-size: 14px;
+}
+
+.card-manga h3 {
+  color: #dc2626;
+  font-size: 22px;
+  margin: 15px 0;
+}
+
+.card-manga button {
+  width: 100%;
+  padding: 12px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.card-manga button:hover {
+  background: #991b1b;
+}
+
+@media (max-width: 600px) {
+  .catalogo {
+    padding: 15px;
+  }
+
+  .catalogo h1 {
+    font-size: 25px;
+  }
+
+  .card-manga img {
+    height: 240px;
+  }
+}

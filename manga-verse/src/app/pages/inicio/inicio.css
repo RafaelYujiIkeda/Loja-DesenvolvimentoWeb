@@ -1,0 +1,364 @@
+
+/* CONFIGURAÇÕES GERAIS */
+
+section {
+  width: 100%;
+}
+
+.etiqueta {
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+
+/* BANNER PRINCIPAL */
+
+.banner {
+  min-height: 470px;
+  background: #171717;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 60px 8%;
+  gap: 40px;
+}
+
+.banner-conteudo {
+  max-width: 550px;
+}
+
+.banner h1 {
+  font-size: 48px;
+  line-height: 1.2;
+  margin: 20px 0;
+}
+
+.banner h1 span {
+  display: block;
+  color: #ef3333;
+}
+
+.banner p {
+  color: #ccc;
+  line-height: 1.8;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.botao-banner {
+  display: inline-block;
+  background: #dc2626;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 7px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.botao-banner:hover {
+  background: #991b1b;
+  transform: translateY(-3px);
+}
+
+.banner-imagem {
+  width: 40%;
+  max-width: 430px;
+}
+
+.banner-imagem img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+
+/* CATEGORIAS */
+
+.categorias {
+  padding: 65px 8%;
+  background: #fff;
+}
+
+.titulo-secao {
+  margin-bottom: 30px;
+}
+
+.titulo-secao h2 {
+  font-size: 30px;
+  color: #222;
+  margin: 10px 0;
+}
+
+.titulo-secao p {
+  color: #777;
+}
+
+.lista-categorias {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.categoria {
+  background: #f5f5f5;
+  padding: 30px 15px;
+  text-align: center;
+  border-radius: 10px;
+  color: #222;
+  transition: 0.3s;
+}
+
+.categoria:hover {
+  background: #fee2e2;
+  transform: translateY(-5px);
+}
+
+.categoria span {
+  font-size: 35px;
+}
+
+.categoria h3 {
+  margin-top: 12px;
+}
+
+
+/* MANGÁS EM DESTAQUE */
+
+.destaques {
+  padding: 65px 8%;
+  background: #f5f5f5;
+}
+
+.destaques .titulo-secao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link-catalogo {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.lista-mangas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.card-manga {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px #0001;
+  transition: 0.3s;
+}
+
+.card-manga:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px #0002;
+}
+
+.card-manga img {
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+  padding: 20px;
+  background: white;
+}
+
+.informacoes-manga {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.genero {
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.informacoes-manga h3 {
+  margin: 12px 0 5px;
+  font-size: 21px;
+}
+
+.informacoes-manga p {
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.informacoes-manga strong {
+  color: #dc2626;
+  font-size: 21px;
+  margin-bottom: 18px;
+}
+
+.botao-detalhes {
+  width: 100%;
+  text-align: center;
+  background: #dc2626;
+  color: white;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.botao-detalhes:hover {
+  background: #991b1b;
+}
+
+.sem-mangas {
+  color: #777;
+  text-align: center;
+}
+
+
+/* SOBRE A LOJA */
+
+.sobre {
+  padding: 75px 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  background: white;
+}
+
+.sobre-conteudo h2 {
+  font-size: 35px;
+  color: #222;
+  margin: 15px 0;
+  line-height: 1.3;
+}
+
+.sobre-conteudo p {
+  color: #777;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.beneficios {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.beneficio {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.beneficio span {
+  background: #fee2e2;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 28px;
+}
+
+.beneficio h3 {
+  margin-bottom: 5px;
+}
+
+.beneficio p {
+  color: #777;
+}
+
+
+/* CHAMADA FINAL */
+
+.chamada-final {
+  background: #171717;
+  color: white;
+  text-align: center;
+  padding: 65px 20px;
+}
+
+.chamada-final h2 {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.chamada-final p {
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+.chamada-final a {
+  display: inline-block;
+  background: #dc2626;
+  color: white;
+  padding: 14px 25px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.chamada-final a:hover {
+  background: #991b1b;
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 850px) {
+
+  .banner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .banner-imagem {
+    width: 80%;
+  }
+
+  .lista-categorias {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lista-mangas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sobre {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 550px) {
+
+  .banner h1 {
+    font-size: 35px;
+  }
+
+  .lista-mangas {
+    grid-template-columns: 1fr;
+  }
+
+  .destaques .titulo-secao {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .banner-imagem {
+    width: 100%;
+  }
+
+  .sobre-conteudo h2 {
+    font-size: 28px;
+  }
+
+}

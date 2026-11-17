@@ -1,0 +1,55 @@
+
+<div class="painel-admin">
+
+  <div class="topo-admin">
+
+    <div>
+      <h1>Painel administrativo</h1>
+      <p>Gerencie os mangás da MangaVerse.</p>
+    </div>
+
+    <button (click)="novoManga()">
+      + Adicionar mangá
+    </button>
+
+  </div>
+
+  <h2>Mangás cadastrados</h2>
+
+  <div class="lista-admin">
+
+    <div class="produto-admin" *ngFor="let manga of mangas">
+
+      <img [src]="manga.imagem" [alt]="manga.nome">
+
+      <div class="dados-produto">
+
+        <h3>{{ manga.nome }}</h3>
+
+        <p>Autor: {{ manga.autor }}</p>
+
+        <p>Gênero: {{ manga.genero }}</p>
+
+        <p>Estoque: {{ manga.estoque }}</p>
+
+        <strong>
+          {{ manga.preco | currency:'BRL' }}
+        </strong>
+
+      </div>
+
+      <button
+        class="excluir"
+        (click)="excluirManga(manga.id)">
+        Excluir
+      </button>
+
+    </div>
+
+  </div>
+
+  <p *ngIf="mangas.length === 0">
+    Nenhum mangá cadastrado.
+  </p>
+
+</div>
