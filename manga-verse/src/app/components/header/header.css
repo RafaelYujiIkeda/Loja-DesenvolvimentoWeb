@@ -48,3 +48,24 @@
     gap: 15px;
   }
 }
+
+.btn-sair {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-sair:hover {
+  background-color: #991b1b;
+  transform: translateY(-2px);
+}
+
+.btn-sair:active {
+  transform: scale(0.96);
+}
