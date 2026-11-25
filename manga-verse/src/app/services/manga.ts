@@ -1,122 +1,35 @@
-
 import { Injectable } from '@angular/core';
+import { Observable, of, throwError } from 'rxjs';
 import { Manga } from '../models/manga';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class MangaService {
+  private readonly chave = 'mangaverseMangas';
+  constructor() { this.inicializar(); }
 
-  private mangas: Manga[] = [
-
-    {
-      id: 1,
-      nome: 'One Piece',
-      autor: 'Eiichiro Oda',
-      genero: 'Aventura',
-      preco: 39.90,
-      imagem: 'one-piece.jpg',
-      descricao: 'Acompanhe Monkey D. Luffy em sua jornada para encontrar o lendário tesouro One Piece.',
-      estoque: 10
-    },
-
-    {
-      id: 2,
-      nome: 'Naruto',
-      autor: 'Masashi Kishimoto',
-      genero: 'Ação',
-      preco: 34.90,
-      imagem: 'naruto.jpg',
-      descricao: 'Conheça a jornada de Naruto Uzumaki para se tornar o Hokage de sua vila.',
-      estoque: 15
-    },
-
-    {
-      id: 3,
-      nome: 'Jujutsu Kaisen',
-      autor: 'Gege Akutami',
-      genero: 'Sobrenatural',
-      preco: 36.90,
-      imagem: 'jujutsu.jpg',
-      descricao: 'Yuji Itadori entra no mundo das maldições após um acontecimento inesperado.',
-      estoque: 8
-    }
-
-  ];
-
-  listarMangas(): Manga[] {
-    return this.mangas;
+  private inicializar(): void {
+    if (localStorage.getItem(this.chave) !== null) return;
+    const iniciais: Manga[] = [
+      { id: 1, nome: 'One Piece', autor: 'Eiichiro Oda', genero: 'Aventura', preco: 39.90, imagem: '/one-piece.jpg', descricao: 'A jornada de Monkey D. Luffy em busca do maior tesouro dos mares.', estoque: 10, destaque: true },
+      { id: 2, nome: 'Naruto', autor: 'Masashi Kishimoto', genero: 'Ação', preco: 34.90, imagem: '/naruto.jpg', descricao: 'A história de Naruto Uzumaki, um jovem ninja que deseja se tornar Hokage.', estoque: 10, destaque: true },
+      { id: 3, nome: 'Jujutsu Kaisen', autor: 'Gege Akutami', genero: 'Sobrenatural', preco: 36.90, imagem: '/jujutsu.jpg', descricao: 'Yuji Itadori entra no mundo das maldições após um encontro inesperado.', estoque: 8, destaque: true }
+    ];
+    localStorage.setItem(this.chave, JSON.stringify(iniciais));
   }
 
-  buscarPorId(id: number): Manga | undefined {
-    return this.mangas.find(manga => manga.id === id);
+  private todos(): Manga[] { return JSON.parse(localStorage.getItem(this.chave) || '[]') as Manga[]; }
+  private salvar(lista: Manga[]): void { localStorage.setItem(this.chave, JSON.stringify(lista)); }
+  listarMangas(): Observable<Manga[]> { return of(this.todos()); }
+  carregarVitrine(): Observable<Manga[]> { return of(this.todos().filter(m => m.destaque)); }
+  buscarPorId(id: number): Observable<Manga> { const m = this.todos().find(x => x.id === id); return m ? of(m) : throwError(() => new Error('Mangá não encontrado.')); }
+  adicionar(dados: Omit<Manga, 'id'>): Observable<Manga> {
+    const lista = this.todos(); const id = lista.reduce((maior, m) => Math.max(maior, m.id), 0) + 1;
+    const novo: Manga = { ...dados, id }; lista.push(novo); this.salvar(lista); return of(novo);
   }
-
-private chave = 'mangas';
-
-constructor() {
-
-  const dados = localStorage.getItem(this.chave);
-
-  if (dados) {
-    this.mangas = JSON.parse(dados) as Manga[];
-  } else {
-    this.salvar();
+  editar(id: number, dados: Manga): Observable<Manga> {
+    const lista = this.todos(); const i = lista.findIndex(m => m.id === id);
+    if (i < 0) return throwError(() => new Error('Mangá não encontrado.'));
+    lista[i] = { ...dados, id }; this.salvar(lista); return of(lista[i]);
   }
-
-}
-
-private salvar(): void {
-
-  localStorage.setItem(
-    this.chave,
-    JSON.stringify(this.mangas)
-  );
-
-}
-
-adicionar(manga: Manga): void {
-
-  manga.id = this.mangas.length > 0
-    ? Math.max(...this.mangas.map(item => item.id)) + 1
-    : 1;
-
-  this.mangas.push(manga);
-
-  this.salvar();
-
-}
-
-editar(id: number, dados: Manga): boolean {
-
-  const indice = this.mangas.findIndex(
-    manga => manga.id === id
-  );
-
-  if (indice === -1) {
-    return false;
-  }
-
-  this.mangas[indice] = {
-    ...dados,
-    id: id
-  };
-
-  this.salvar();
-
-  return true;
-
-}
-
-excluir(id: number): void {
-
-  this.mangas = this.mangas.filter(
-    manga => manga.id !== id
-  );
-
-  this.salvar();
-
-}
-
-
+  excluir(id: number): Observable<string> { this.salvar(this.todos().filter(m => m.id !== id)); return of('Mangá excluído.'); }
 }

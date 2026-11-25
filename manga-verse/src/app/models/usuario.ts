@@ -1,7 +1,7 @@
-
 export interface Usuario {
+  codigo?: number;
   nome: string;
   email: string;
-  senha: string;
+  documento?: string;
   tipo: 'cliente' | 'admin';
 }

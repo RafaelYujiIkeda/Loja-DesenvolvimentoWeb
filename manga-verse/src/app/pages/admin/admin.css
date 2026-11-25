@@ -92,3 +92,16 @@
     flex-wrap: wrap;
   }
 }
+
+.abas-admin { display:flex; gap:10px; flex-wrap:wrap; margin:22px 0; }
+.abas-admin button, .form-admin button { background:#df2424; color:#fff; border:0; border-radius:6px; padding:10px 16px; cursor:pointer; }
+.painel-admin section { margin:20px 0; }
+.painel-admin table { width:100%; border-collapse:collapse; margin:16px 0; background:#fff; }
+.painel-admin th,.painel-admin td { border:1px solid #ddd; padding:10px; text-align:left; }
+.painel-admin th { background:#171717; color:white; }
+.painel-admin td button { margin:3px; }
+.form-admin { display:flex; flex-direction:column; gap:10px; max-width:600px; margin:22px 0; padding:18px; background:#fff; border-radius:10px; box-shadow:0 2px 10px #0001; }
+.form-admin input,.form-admin select,.form-admin textarea { padding:10px; border:1px solid #ccc; border-radius:5px; font:inherit; }
+.form-admin textarea { min-height:90px; }
+.mensagem-admin { color:#b91c1c; font-weight:600; }
+@media(max-width:700px){.painel-admin{overflow-x:auto}.painel-admin table{min-width:650px}}

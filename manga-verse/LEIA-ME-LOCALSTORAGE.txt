@@ -1,0 +1,58 @@
+MANGAVERSE - VERSAO COM LOCALSTORAGE
+====================================
+
+Esta versão funciona somente com Angular e localStorage do navegador.
+Não utiliza backend Java, Spring Boot, API HTTP ou Maven.
+
+COMO EXECUTAR
+-------------
+1. Instale uma versão do Node.js compatível com a versão do Angular do projeto.
+2. Abra esta pasta no VS Code.
+3. Abra o terminal nesta pasta.
+4. Execute: npm install
+5. Execute: npm start
+6. Acesse o endereço informado pelo Angular CLI (normalmente http://localhost:4200).
+
+LOGIN ADMINISTRATIVO DE DEMONSTRAÇÃO
+------------------------------------
+E-mail: admin@mangaverse.com
+Senha: Admin123!
+
+Altere essas credenciais no arquivo:
+src/app/services/auth.ts
+
+FUNCIONALIDADES
+---------------
+- Cadastro de clientes com validação de e-mail e senha.
+- Login de clientes e administrador.
+- Administração de clientes: listar, editar dados, excluir e redefinir senha.
+- Administração de pedidos: listar, cadastrar, alterar e excluir.
+- Administração de mangás: cadastrar, consultar/editar e excluir.
+- Catálogo e vitrine carregados dos mangás armazenados localmente.
+- Carrinho e pedidos salvos no localStorage.
+
+CHAVES UTILIZADAS NO localStorage
+---------------------------------
+mangaverseUsuarios
+usuarioLogado
+mangaverseAdminAuth
+mangaverseMangas
+mangaversePedidos
+carrinho
+
+IMPORTANTE SOBRE SEGURANÇA E LIMITAÇÕES
+---------------------------------------
+Esta é uma implementação para protótipo, estudo e demonstração acadêmica.
+localStorage não é um banco de dados seguro: os dados ficam somente no navegador
+em que foram cadastrados, podem ser editados pelo próprio usuário e não são
+compartilhados entre computadores ou navegadores. A senha de demonstração do
+administrador e as senhas dos clientes não ficam protegidas por um servidor.
+Não use esta versão para pagamentos, dados reais ou publicação de uma loja.
+Para produção, será necessário backend, autenticação e armazenamento seguros.
+
+Os clientes aparecem na administração com nome, e-mail e documento, mas as
+senhas nunca são exibidas na tela administrativa.
+
+Para reiniciar os dados de demonstração, abra o console do navegador (F12) e
+execute localStorage.clear(); depois atualize a página. Isso apaga também
+carrinho, sessão, usuários, pedidos e mangás cadastrados localmente.

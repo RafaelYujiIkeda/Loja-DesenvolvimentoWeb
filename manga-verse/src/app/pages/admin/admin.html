@@ -1,55 +1,22 @@
-
 <div class="painel-admin">
+  <div class="topo-admin"><div><h1>Painel administrativo</h1><p>Gerencie clientes, pedidos e mangás da MangaVerse.</p></div><button (click)="sair()">Sair</button></div>
+  <nav class="abas-admin"><button (click)="aba='clientes'">Clientes</button><button (click)="aba='pedidos'">Pedidos</button><button (click)="aba='produtos'">Produtos</button></nav>
+  <p *ngIf="mensagem" class="mensagem-admin">{{mensagem}}</p>
 
-  <div class="topo-admin">
+  <section *ngIf="aba==='clientes'"><h2>Clientes cadastrados</h2><button (click)="carregarClientes()">Atualizar lista</button>
+    <table><thead><tr><th>Código</th><th>Nome</th><th>E-mail</th><th>Documento</th><th>Ações</th></tr></thead><tbody>
+      <tr *ngFor="let c of clientes"><td>{{c.codigo}}</td><td>{{c.nome}}</td><td>{{c.email}}</td><td>{{c.documento}}</td><td><button (click)="editarCliente(c)">Editar</button><button (click)="excluirCliente(c)">Excluir</button><button (click)="alterarSenha(c)">Definir senha</button></td></tr>
+    </tbody></table>
+    <div class="form-admin" *ngIf="clienteEdicao"><h3>Atualizar cadastro</h3><input [(ngModel)]="clienteEdicao.nome" placeholder="Nome"><input [(ngModel)]="clienteEdicao.email" placeholder="E-mail"><input [(ngModel)]="clienteEdicao.documento" placeholder="Documento"><button (click)="salvarCliente()">Salvar</button><button (click)="clienteEdicao=null">Cancelar</button></div>
+  </section>
 
-    <div>
-      <h1>Painel administrativo</h1>
-      <p>Gerencie os mangás da MangaVerse.</p>
-    </div>
+  <section *ngIf="aba==='pedidos'"><h2>Gerenciar pedidos</h2><button (click)="novoPedido()">Novo pedido</button><button (click)="carregarPedidos()">Atualizar lista</button>
+    <div class="form-admin"><h3>{{pedidoEdicao.codigoPedido?'Editar pedido':'Cadastrar pedido'}}</h3><input type="number" [(ngModel)]="pedidoEdicao.clienteCodigo" placeholder="Código do cliente"><input [(ngModel)]="pedidoEdicao.clienteNome" placeholder="Nome do cliente"><input type="number" step="0.01" [(ngModel)]="pedidoEdicao.valorTotal" placeholder="Valor total"><select [(ngModel)]="pedidoEdicao.status"><option>RECEBIDO</option><option>EM_PREPARACAO</option><option>ENVIADO</option><option>ENTREGUE</option><option>CANCELADO</option></select><textarea [(ngModel)]="pedidoEdicao.itensJson" placeholder='Itens em JSON, ex.: [{"produtoCodigo":1,"quantidade":2}]'></textarea><button (click)="salvarPedido()">Salvar pedido</button></div>
+    <table><thead><tr><th>Código</th><th>Cliente</th><th>Status</th><th>Total</th><th>Ações</th></tr></thead><tbody><tr *ngFor="let p of pedidos"><td>{{p.codigoPedido}}</td><td>{{p.clienteNome}} ({{p.clienteCodigo}})</td><td>{{p.status}}</td><td>{{p.valorTotal | currency:'BRL'}}</td><td><button (click)="editarPedido(p)">Editar</button><button (click)="excluirPedido(p)">Excluir</button></td></tr></tbody></table>
+  </section>
 
-    <button (click)="novoManga()">
-      + Adicionar mangá
-    </button>
-
-  </div>
-
-  <h2>Mangás cadastrados</h2>
-
-  <div class="lista-admin">
-
-    <div class="produto-admin" *ngFor="let manga of mangas">
-
-      <img [src]="manga.imagem" [alt]="manga.nome">
-
-      <div class="dados-produto">
-
-        <h3>{{ manga.nome }}</h3>
-
-        <p>Autor: {{ manga.autor }}</p>
-
-        <p>Gênero: {{ manga.genero }}</p>
-
-        <p>Estoque: {{ manga.estoque }}</p>
-
-        <strong>
-          {{ manga.preco | currency:'BRL' }}
-        </strong>
-
-      </div>
-
-      <button
-        class="excluir"
-        (click)="excluirManga(manga.id)">
-        Excluir
-      </button>
-
-    </div>
-
-  </div>
-
-  <p *ngIf="mangas.length === 0">
-    Nenhum mangá cadastrado.
-  </p>
-
+  <section *ngIf="aba==='produtos'"><h2>Produtos cadastrados</h2><button (click)="novoManga()">+ Cadastrar mangá</button><button (click)="carregarProdutos()">Listar todos</button><div class="form-admin"><h3>Consultar produto por código</h3><input type="number" [(ngModel)]="codigoBuscaProduto" placeholder="Código do produto"><button (click)="consultarProdutoPorCodigo()">Consultar</button><p *ngIf="produtoEncontrado">{{produtoEncontrado.nome}} — {{produtoEncontrado.preco | currency:'BRL'}}</p></div>
+    <table><thead><tr><th>Código</th><th>Mangá</th><th>Autor</th><th>Preço</th><th>Estoque</th><th>Ações</th></tr></thead><tbody><tr *ngFor="let m of mangas"><td>{{m.id}}</td><td>{{m.nome}}</td><td>{{m.autor}}</td><td>{{m.preco | currency:'BRL'}}</td><td>{{m.estoque}}</td><td><button (click)="editarManga(m)">Alterar</button><button (click)="excluirManga(m.id)">Excluir</button></td></tr></tbody></table>
+    <p>Os mangás ficam salvos no armazenamento local deste navegador. Produtos com destaque ativo aparecem na vitrine.</p>
+  </section>
 </div>

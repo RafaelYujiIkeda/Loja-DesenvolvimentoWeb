@@ -7,4 +7,5 @@ export interface Manga {
   imagem: string;
   descricao: string;
   estoque: number;
+  destaque?: boolean;
 }

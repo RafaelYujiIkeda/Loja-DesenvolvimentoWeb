@@ -1,26 +1,13 @@
-
 <div class="catalogo">
-
   <h1>Nosso catálogo de mangás</h1>
-
+  <p *ngIf="carregando">Carregando mangás...</p>
+  <p *ngIf="erro">{{ erro }}</p>
   <div class="lista-mangas">
-
     <div class="card-manga" *ngFor="let manga of mangas">
-
       <img [src]="manga.imagem" [alt]="manga.nome">
-
-      <h2>{{ manga.nome }}</h2>
-
-      <p>{{ manga.autor }}</p>
-
+      <h2>{{ manga.nome }}</h2><p>{{ manga.autor }}</p>
       <h3>{{ manga.preco | currency:'BRL' }}</h3>
-
-      <button (click)="verDetalhes(manga.id)">
-        Ver detalhes
-      </button>
-
+      <button (click)="verDetalhes(manga.id)">Ver detalhes</button>
     </div>
-
   </div>
-
 </div>

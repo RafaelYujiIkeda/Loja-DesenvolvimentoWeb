@@ -1,1 +1,13 @@
-<p>pedidos works!</p>
+<div class="pagina-pedidos">
+  <h1>Meus pedidos</h1>
+  <p *ngIf="carregando">Carregando pedidos...</p>
+  <p *ngIf="erro">{{erro}} <a routerLink="/login">Fazer login</a></p>
+  <div class="pedido-card" *ngFor="let p of pedidos">
+    <h2>Pedido #{{p.codigoPedido}}</h2>
+    <p>Status: <strong>{{p.status}}</strong></p>
+    <p>Data: {{p.dataPedido | date:'dd/MM/yyyy HH:mm'}}</p>
+    <p>Total: {{p.valorTotal | currency:'BRL'}}</p>
+    <details><summary>Ver itens</summary><pre>{{p.itensJson}}</pre></details>
+  </div>
+  <p *ngIf="!carregando && !erro && pedidos.length===0">Você ainda não realizou pedidos.</p>
+</div>
